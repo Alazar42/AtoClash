@@ -1,0 +1,226 @@
+[gd_scene load_steps=18 format=3 uid="uid://bfg01d3nwun8f"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_054gb"]
+[ext_resource type="FontFile" uid="uid://bsjjn2wnrjs0g" path="res://assets/fonts/MinecraftTen-VGORe.ttf" id="1_xkun1"]
+[ext_resource type="StyleBox" uid="uid://boqwjd1xxjhtn" path="res://assets/themes/button_orangish.tres" id="2_gtvpv"]
+[ext_resource type="PackedScene" uid="uid://d2h51qlls136h" path="res://assets/models/test_models/building-small-b.glb" id="4_mws4s"]
+[ext_resource type="PackedScene" uid="uid://cnycdi6t5tj01" path="res://assets/models/test_models/building-small-a.glb" id="5_ht43b"]
+[ext_resource type="PackedScene" uid="uid://d0nnrx2y4px2v" path="res://assets/models/test_models/building-garage.glb" id="6_ocpps"]
+[ext_resource type="PackedScene" uid="uid://b1711sieed2u6" path="res://assets/models/test_models/grass-trees.glb" id="7_cxlos"]
+[ext_resource type="PackedScene" uid="uid://6v0t536s83vb" path="res://assets/models/test_models/pavement-fountain.glb" id="8_67yfl"]
+[ext_resource type="PackedScene" uid="uid://b4tgtg0j2dgh8" path="res://assets/models/test_models/road-straight.glb" id="9_d48lu"]
+[ext_resource type="PackedScene" uid="uid://mu30r6rmht07" path="res://assets/models/test_models/road-split.glb" id="10_xtcse"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1mq3w"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_26m5k"]
+sky_material = SubResource("ProceduralSkyMaterial_1mq3w")
+
+[sub_resource type="Environment" id="Environment_ggxt3"]
+background_mode = 2
+sky = SubResource("Sky_26m5k")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Theme" id="Theme_tx5mi"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_xkun1")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+
+[sub_resource type="Theme" id="Theme_crivp"]
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = ExtResource("2_gtvpv")
+Button/styles/pressed = null
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oo6kn"]
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omdk2"]
+albedo_color = Color(0.203922, 0.788235, 0.117647, 0.741176)
+
+[node name="Map" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ggxt3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_054gb")
+
+[node name="Label" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32891
+anchor_top = 0.296593
+anchor_right = 0.32891
+anchor_bottom = 0.296593
+offset_left = -254.904
+offset_top = -40.192
+offset_right = 254.096
+offset_bottom = 39.808
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_xkun1")
+theme_override_font_sizes/font_size = 80
+text = "Ato Clash"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.5
+offset_top = -167.0
+offset_right = 254.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_tx5mi")
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_crivp")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[node name="LoadButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_gtvpv")
+text = "LOAD"
+
+[node name="ExitButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_gtvpv")
+text = "EXIT"
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="building-small-b" parent="Scenery" instance=ExtResource("4_mws4s")]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Scenery"]
+transform = Transform3D(579.506, 0, 0, 0, 216.638, 0, 0, 0, 500, 0, -0.1, 0)
+mesh = SubResource("PlaneMesh_oo6kn")
+material = SubResource("StandardMaterial3D_omdk2")
+
+[node name="building-small-a" parent="Scenery" instance=ExtResource("5_ht43b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="building-garage" parent="Scenery" instance=ExtResource("6_ocpps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="grass-trees" parent="Scenery" instance=ExtResource("7_cxlos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="grass-trees2" parent="Scenery" instance=ExtResource("7_cxlos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="pavement-fountain" parent="Scenery" instance=ExtResource("8_67yfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="road-straight" parent="Scenery" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 1)
+
+[node name="road-straight5" parent="Scenery" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.99237, 0, 1)
+
+[node name="road-straight3" parent="Scenery" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1)
+
+[node name="road-straight4" parent="Scenery" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1)
+
+[node name="road-split" parent="Scenery" instance=ExtResource("10_xtcse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Scenery2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1)
+
+[node name="building-small-b" parent="Scenery2" instance=ExtResource("4_mws4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5.96046e-08)
+
+[node name="building-small-a" parent="Scenery2" instance=ExtResource("5_ht43b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="building-garage" parent="Scenery2" instance=ExtResource("6_ocpps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0)
+
+[node name="grass-trees" parent="Scenery2" instance=ExtResource("7_cxlos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="grass-trees2" parent="Scenery2" instance=ExtResource("7_cxlos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="pavement-fountain" parent="Scenery2" instance=ExtResource("8_67yfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="road-straight" parent="Scenery2" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 1)
+
+[node name="road-straight5" parent="Scenery2" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.99237, 0, 1)
+
+[node name="road-straight3" parent="Scenery2" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1)
+
+[node name="road-straight6" parent="Scenery2" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.56362e-08, 0, 2)
+
+[node name="road-straight7" parent="Scenery2" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.81478e-07, 0, -3)
+
+[node name="road-straight4" parent="Scenery2" instance=ExtResource("9_d48lu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1)
+
+[node name="road-split" parent="Scenery2" instance=ExtResource("10_xtcse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(-0.429471, 0, -0.903081, 0, 1, 0, 0.903081, 0, -0.429471, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.967263, 0.253775, 0, -0.253775, 0.967263, 0.259451, 3.16379, 7.73895)
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="MainMenu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/LoadButton" to="MainMenu" method="_on_load_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/ExitButton" to="MainMenu" method="_on_exit_button_pressed"]
